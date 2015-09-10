@@ -24,10 +24,7 @@ window.onload = function (e) {
         advertising: {
             client: 'vast',
             tag: 'https://origin.ieeetvdev.ieee.org/html-jw-player/test-jw6/ad.doubleclick.test.xml'
-        },
-	cast : {
-	    appid : 'CC1AD845'
-	}  
+        }
     });
 
     initializeCastApi();
@@ -69,8 +66,11 @@ window.onload = function (e) {
       var loadRequest = new chrome.cast.media.LoadRequest(mediaInfo);
      	loadRequest.autoplay = true;
       loadRequest.currentTime = jwplayer('individual_video').getPosition() || 0;
-      console.log('Sending Load Request: ', loadRequest);
+      console.log('\n\nGO TO : ', jwplayer('individual_video').getPosition());
+      jwplayer('individual_video').pause();
+      jwplayer('individual_video').setControls(false);
 
+      console.log('Sending Load Request: ', loadRequest);
 
       // Loads media into a running receiver application.
       // This call will fail unless this session supports the namespace "urn:x-cast:chrome.cast.media".
@@ -80,14 +80,18 @@ window.onload = function (e) {
           window.apiMedia = media;
           console.log("Got media object");
 
-          //jwplayer('individual_video').setControls(false);
           
-          jwplayer('individual_video').pause();
+          window.apiMedia.pause();
+          console.log('WENT TO', window.apiMedia.getEstimatedTime());
+
+          
+
           window.apiSession.addUpdateListener(function(){
             if (window.apiSession.status === 'stopped') {
-              console.log('\n\nLAST TIME WAS : ', window.apiMedia.currentTime);
-              jwplayer('individual_video').seek(window.apiMedia.currentTime);
-
+              
+              jwplayer('individual_video').setControls(true);
+              jwplayer('individual_video').seek(parseInt(window.apiMedia.getEstimatedTime()));
+              console.log('\n\nLAST TIME WAS : ', parseInt(window.apiMedia.getEstimatedTime()));
             }
           });
 
