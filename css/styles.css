@@ -986,3 +986,41 @@ input.btn {
 					}
 
 .individual_video { height:370px; background-color:#7d7d7d;}
+
+.main-video {
+	position: relative;
+}
+
+#sendChromecast {
+	padding-top: 5px;
+	cursor: pointer;
+	clear: both;
+}
+
+/*.main-video:after {
+	content: '';
+	display: block;
+	position: absolute;
+	background: #f00;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}*/
+
+.casting-now {
+	display: block;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	position: absolute;
+	z-index: 1000;
+	background: transparent;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	
+	font-size: 24px;
+	color: #fff;
+	text-shadow: 0 0 5px #000;
+}

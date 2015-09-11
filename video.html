@@ -816,14 +816,14 @@
 	</div>
 	</div>
 	</div> <!--#topnav-menu-->
-    
-    
 
 	<div class="breadcrumb width-2"><a href="/">Home</a> <i class="fa fa-angle-right"></i> <a href="/">Series</a> <i class="fa fa-angle-right"></i> <a href="/">IEEE Spectrum Reports</a></div>
     
 	<div class="main-video-section width-2">
             <div class="main-video"><div class="individual_video" id="individual_video"></div><!--<img src="images/main-thn.jpg" alt="" />-->
-                <div id="sendChromecast" style="display:none; cursor: pointer;" onclick="launchAppOnReceiver()"><i class="fa fa-wifi"></i> Cast video</div>
+            	<div class="casting-now" style="display: none;">
+            		Chromecasting this video
+            	</div>
             </div>
             <div class="main-video-menu">
                 <ul>
@@ -912,6 +912,9 @@
                     </li>
                 </ul>
             </div><!--.main-video-menu-->
+            <div id="sendChromecast" style="display:none;" onclick="launchAppOnReceiver()">
+				<img src="images/chromecast-icon.png" alt="chromacast" width="24px" style="margin-right: 5px; position: relative; top: 3px"/>Cast video
+            </div>
     </div><!--.main-video-section-->
     
     <div class="width-2">
