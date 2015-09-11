@@ -91,14 +91,12 @@ window.onload = function (e) {
 
           window.apiSession.addUpdateListener(function(){
             if (window.apiSession.status === 'stopped') {
-              jwplayer('individual_video').play();
-
-              jwplayer('individual_video').onReady(function() { jwplayer().seek('3') });
-
 
               jwplayer('individual_video').setControls(true);
-              //jwplayer('individual_video').seek(parseInt(window.apiMedia.getEstimatedTime()));
-              console.log('\n\nLAST TIME WAS : ', parseInt(window.apiMedia.getEstimatedTime()));
+              if (jwplayer('individual_video').getState() === 'PAUSED') {
+                jwplayer('individual_video').seek(parseInt(window.apiMedia.getEstimatedTime()));
+                console.log('\n\nLAST TIME WAS : ', parseInt(window.apiMedia.getEstimatedTime()));
+              }
 
               document.getElementsByClassName('casting-now')[0].style.display = 'none';
 
